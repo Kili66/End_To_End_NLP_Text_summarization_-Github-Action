@@ -9,7 +9,7 @@ __version__= "0.0.0"
 REPO_NAME="Nlp_text_summarization"
 AUTHOR_USER_NAME= "Kili66"
 SRC_REPO="textSummarizer"   # project name inside src folder, local package
-AUTHOR_EMAIL="mariamkilibech@gmail.com"
+AUTHOR_EMAIL="mariam@gmail.com"
 
 setuptools.setup(
     name=SRC_REPO,
