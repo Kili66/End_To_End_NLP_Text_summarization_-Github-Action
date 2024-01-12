@@ -1,6 +1,6 @@
 from textSummarizer.constants import *
 from textSummarizer.utils.common import read_yaml, create_directories
-from textSummarizer.entity import (DataIngestionConfig)
+from textSummarizer.entity import (DataIngestionConfig, DataValidationConfig)
 class ConfigurationManager:
     # access to constants variables
     def __init__(
@@ -12,7 +12,8 @@ class ConfigurationManager:
         self.params= read_yaml(params_filepath)
         
         create_directories([self.config.artifacts_root]) #configBox method, create the directory created on yaml: artifacts_root
-        
+   
+   # ----------------------- Data Ingestion -------------  
     def get_data_ingestion_config(self)->DataIngestionConfig:
         config= self.config.data_ingestion
         
@@ -26,3 +27,17 @@ class ConfigurationManager:
             unzip_dir= config.unzip_dir,
         )
         return data_ingestion_config
+    
+    #----------------------- Data Validation-------------
+    def get_data_validation_config(self) -> DataValidationConfig:
+        config = self.config.data_validation
+
+        create_directories([config.root_dir])
+
+        data_validation_config = DataValidationConfig(
+            root_dir=config.root_dir,
+            STATUS_FILE=config.STATUS_FILE,
+            ALL_REQUIRED_FILES=config.ALL_REQUIRED_FILES,
+        )
+
+        return data_validation_config
