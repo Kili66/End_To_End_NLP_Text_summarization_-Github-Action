@@ -1,1 +1,11 @@
-key: value # to avoid emptiness errors
+#key: value # to avoid emptiness errors
+TrainingArguments:
+  num_train_epochs: 1
+  warmup_steps: 500
+  per_device_train_batch_size: 1
+  weight_decay: 0.01
+  logging_steps: 10
+  evaluation_strategy: 500
+  eval_steps: 500
+  save_steps: 1e6
+  gradient_accumulation_steps: 16
